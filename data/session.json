@@ -1,0 +1,40 @@
+{
+    "Sandrine": [
+        {
+            "msg": "Hello! how are you?",
+            "speaker": "contact"
+        },
+        {
+            "msg": "pw",
+            "speaker": "user"
+        }
+    ],
+    "Phillipine": [
+        {
+            "msg": "Do you have the bread?",
+            "speaker": "contact"
+        },
+        {
+            "msg": "Yes I have it",
+            "speaker": "user"
+        },
+        {
+            "msg": "Great!",
+            "speaker": "contact"
+        },
+        {
+            "msg": "See you later",
+            "speaker": "contact"
+        },
+        {
+            "msg": "No way",
+            "speaker": "user"
+        }
+    ],
+    "Marion": [
+        {
+            "msg": "Magnifique",
+            "speaker": "user"
+        }
+    ]
+}
