@@ -9,9 +9,15 @@ def load_css(file_name):
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
 
 
-with open("data.json", "r") as f:
-    data = json.loads(f.read())
+with open("data/base.json", "r") as f:
+    data = json.load(f)
 
-    load_css("main.css")
-    render_sidebar(data.keys())
-    render_conversation()
+if "is_first_load" not in st.session_state:
+    with open("data/session.json", "w") as f:
+        json.dump(data, f, indent=4)
+
+    st.session_state["is_first_load"] = True
+
+load_css("main.css")
+render_sidebar(data.keys())
+render_conversation()
