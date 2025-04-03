@@ -7,6 +7,6 @@ spec:
     app: data-science-app
   ports:
   - protocol: TCP
-    port: 80        # Service port (external)
-    targetPort: 80  # Container port (internal)
-  type: ClusterIP   # Use LoadBalancer for external access (e.g., on SSP Cloud)
+    port: 80       
+    targetPort: 80  
+  type: ClusterIP  

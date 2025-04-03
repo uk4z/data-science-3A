@@ -5,7 +5,7 @@ metadata:
   labels:
     app: data-science-app
 spec:
-  replicas: 1  # Number of pods to run
+  replicas: 1 
   selector:
     matchLabels:
       app: data-science-app
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: data-science-container
-        image: uk4zor/data-science-3a:latest  # Your Docker Hub image
+        image: uk4zor/data-science-3a:latest 
         ports:
-        - containerPort: 80  # Change if your app uses a different port
+        - containerPort: 80

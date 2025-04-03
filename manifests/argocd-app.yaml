@@ -2,17 +2,21 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: data-science-app
-  namespace: argocd  # Namespace where Argo CD is installed (usually `argocd`)
+  namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/uk4z/data-science-3A.git  # Replace with your Git repo URL
-    path: manifests                # Path to the folder containing YAML files in the repo
-    targetRevision: HEAD           # Branch or tag to use (e.g., `main`)
+    repoURL: https://github.com/uk4z/data-science-3A.git  # Public GitHub repo URL
+    path: manifests                                      # Folder containing YAML files
+    targetRevision: main                                 # Use branch name explicitly (e.g., main)
+    directory:
+      recurse: true                                      # Enable recursive syncing for nested files
   destination:
-    server: https://kubernetes.default.svc  # Kubernetes cluster API server (default for SSP Cloud)
-    namespace: default                      # Namespace where you want to deploy the app
+    server: https://kubernetes.default.svc              # Kubernetes cluster API server
+    namespace: default                                   # Target namespace for deployment
   syncPolicy:
     automated:
-      prune: true                           # Automatically remove resources no longer in Git repo
-      selfHeal: true                        # Automatically fix out-of-sync resources
+      prune: true                                       # Automatically remove resources no longer in Git repo
+      selfHeal: true                                    # Automatically fix out-of-sync resources
+    syncOptions:
+    - CreateNamespace=true                              # Allow Argo CD to create namespace if missing
