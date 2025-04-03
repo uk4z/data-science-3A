@@ -17,3 +17,8 @@ Download all the required packages:
 pip install -r requirements.txt
 ```
 
+Alternatively, you can run:
+```shell
+docker build -t streamlit-app .
+docker run -p 8501:8501 streamlit-app
+```
