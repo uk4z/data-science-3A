@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-science-app
+  labels:
+    app: data-science-app
+spec:
+  replicas: 1  # Number of pods to run
+  selector:
+    matchLabels:
+      app: data-science-app
+  template:
+    metadata:
+      labels:
+        app: data-science-app
+    spec:
+      containers:
+      - name: data-science-container
+        image: uk4zor/data-science-3a:latest  # Your Docker Hub image
+        ports:
+        - containerPort: 80  # Change if your app uses a different port
