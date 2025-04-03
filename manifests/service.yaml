@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: data-science-service
+  name: data-science-3a
 spec:
   selector:
-    app: data-science-app
+    app: data-science-3a
   ports:
-  - protocol: TCP
-    port: 80       
-    targetPort: 80  
-  type: ClusterIP  
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
