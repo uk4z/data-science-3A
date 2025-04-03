@@ -1,22 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: data-science-app
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/uk4z/data-science-3A.git  # Public GitHub repo URL
-    path: manifests                                      # Folder containing YAML files
-    targetRevision: main                                 # Use branch name explicitly (e.g., main)
-    directory:
-      recurse: true                                      # Enable recursive syncing for nested files
+    repoURL: https://github.com/uk4z/data-science-3A.git
+    path: manifests
+    targetRevision: HEAD
   destination:
-    server: https://kubernetes.default.svc              # Kubernetes cluster API server
-    namespace: default                                   # Target namespace for deployment
+    server: https://kubernetes.default.svc
+    namespace: default
   syncPolicy:
     automated:
-      prune: true                                       # Automatically remove resources no longer in Git repo
-      selfHeal: true                                    # Automatically fix out-of-sync resources
+      prune: true
+      selfHeal: true
     syncOptions:
-    - CreateNamespace=true                              # Allow Argo CD to create namespace if missing
+    - CreateNamespace=true
