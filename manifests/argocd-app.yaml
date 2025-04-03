@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/<your-github-username>/<repo-name>.git  # Replace with your Git repo URL
+    repoURL: https://github.com/uk4z/data-science-3A.git  # Replace with your Git repo URL
     path: manifests                # Path to the folder containing YAML files in the repo
     targetRevision: HEAD           # Branch or tag to use (e.g., `main`)
   destination:
