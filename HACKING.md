@@ -44,5 +44,8 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 kubectl get pods -n argocd
 kubectl port-forward svc/argocd-server 8080:443 -n argocd
 
-argocd login user-ukazmierczak-argo-cd.user.lab.sspcloud.fr --username admin --password <Password>
+export PASSWORD=`argocd admin initial-password -n argocd`  
+argocd login localhost:8080 --username admin --password PASSWORD -y
+kubectl apply -f application.yaml
 ```
+Now you can go http://localhost:8080 and see the argocd instance with the app running.
