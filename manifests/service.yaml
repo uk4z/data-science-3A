@@ -7,6 +7,5 @@ spec:
     app: data-science-3a
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
-  type: LoadBalancer
+      port: 8080
+      targetPort: 8080

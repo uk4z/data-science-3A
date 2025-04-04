@@ -16,4 +16,4 @@ spec:
       - name: data-science-3a
         image: uk4zor/data-science-3a:latest
         ports:
-        - containerPort: 80
+        - containerPort: 8080
