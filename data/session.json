@@ -5,7 +5,7 @@
             "speaker": "contact"
         },
         {
-            "msg": "pw",
+            "msg": "Jjdslkjf",
             "speaker": "user"
         }
     ],
@@ -31,10 +31,5 @@
             "speaker": "user"
         }
     ],
-    "Marion": [
-        {
-            "msg": "Magnifique",
-            "speaker": "user"
-        }
-    ]
+    "Marion": []
 }
