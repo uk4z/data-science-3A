@@ -10,10 +10,8 @@ def initialize_contacts(contacts):
 
 def handleContactClick(contact):
     def _click():
-        with open("data/session.json", "r") as f:
-            data = json.loads(f.read())
-            load_conversation(data[contact])
-            st.session_state["active_contact"] = contact
+        load_conversation(st.session_state.data[contact])
+        st.session_state["active_contact"] = contact
 
     return _click
 

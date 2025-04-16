@@ -7,12 +7,7 @@ def load_conversation(conversation):
 
 
 def write_message(contact, msg, speaker):
-    with open("data/session.json", "r") as file:
-        data = json.load(file)
-
-    data[contact].append({"msg": msg, "speaker": speaker})
-    with open("data/session.json", "w") as file:
-        json.dump(data, file, indent=4)
+    st.session_state.data[contact].append({"msg": msg, "speaker": speaker})
 
 
 def render_conversation():
