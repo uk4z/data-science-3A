@@ -21,7 +21,7 @@ def render_conversation():
     if "conversation" not in st.session_state:
         load_conversation("")
 
-    if user_input:
+    if user_input and "active_contact" in st.session_state:
         st.session_state.conversation.append({"msg": user_input, "speaker": "user"})
         write_message(st.session_state.active_contact, user_input, "user")
 

@@ -23,13 +23,9 @@ docker build -t streamlit-app .
 docker run -p 8501:8501 streamlit-app
 ```
 
+Deprectaed
 ```shell
 argocd login user-ukazmierczak-argo-cd.user.lab.sspcloud.fr --username admin --password <Password>
-```
-
-To upload a config map:
-```shell
- kubectl apply -f argocd-cmd-params-cm.yaml
 ```
 
 ```shell
