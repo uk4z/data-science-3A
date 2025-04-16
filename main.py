@@ -6,6 +6,7 @@ import json
 import s3fs
 
 
+# Utilisation de S3 pour stocker la data.
 fs = s3fs.S3FileSystem(client_kwargs={"endpoint_url": "https://minio.lab.sspcloud.fr"})
 MY_BUCKET = "ukazmierczak"
 PATH = "base.json"
