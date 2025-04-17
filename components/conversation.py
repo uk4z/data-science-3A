@@ -1,5 +1,5 @@
 import streamlit as st
-import json
+from loguru import logger
 
 
 def load_conversation(conversation):
@@ -8,6 +8,9 @@ def load_conversation(conversation):
 
 def write_message(contact, msg, speaker):
     st.session_state.data[contact].append({"msg": msg, "speaker": speaker})
+    st.session_state.save_data = True
+    st.rerun()
+    logger.info(st.session_state.save_data)
 
 
 def render_conversation():
@@ -17,7 +20,6 @@ def render_conversation():
         load_conversation("")
 
     if user_input and "active_contact" in st.session_state:
-        st.session_state.conversation.append({"msg": user_input, "speaker": "user"})
         write_message(st.session_state.active_contact, user_input, "user")
 
     for ingress in st.session_state.conversation:
