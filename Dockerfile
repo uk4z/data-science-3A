@@ -19,4 +19,5 @@ COPY . .
 EXPOSE 8501
 
 # Run Streamlit when the container starts
-ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# Note: The port might require adjustment. The current port is 8503.
+ENTRYPOINT ["streamlit", "run", "main.py", "--server.port=8503", "--server.address=0.0.0.0"]
