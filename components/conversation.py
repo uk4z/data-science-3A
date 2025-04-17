@@ -19,8 +19,14 @@ def render_conversation():
     if "conversation" not in st.session_state:
         load_conversation("")
 
-    if user_input and "active_contact" in st.session_state:
-        write_message(st.session_state.active_contact, user_input, "user")
+    if "active_contact" in st.session_state:
+        if user_input:
+            write_message(st.session_state.active_contact, user_input, "user")
+        
+        st.markdown(
+            f"<h2 style='text-align: center; width: 100%;'>{st.session_state.active_contact}</h2>", 
+            unsafe_allow_html=True
+        )
 
     for ingress in st.session_state.conversation:
         col1, col2 = st.columns([1, 1])
