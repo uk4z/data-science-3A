@@ -6,6 +6,10 @@ import json
 import s3fs
 import os
 
+# Set AWS credentials and region environment variables (replace <TO_WRITE> with actual values)
+os.environ["AWS_ACCESS_KEY_ID"] = "<TO_WRITE>"
+os.environ["AWS_SECRET_ACCESS_KEY"] = "<TO_WRITE>"
+os.environ["AWS_SESSION_TOKEN"] = "<TO_WRITE>"
 os.environ["AWS_ACCESS_KEY_ID"] = "KWIT4KKCQMIH05NA16P4"
 os.environ["AWS_SECRET_ACCESS_KEY"] = "n5MKQ49CtFo5QD6njFcPrbRHGosAV+e3gmYtvfqx"
 os.environ["AWS_SESSION_TOKEN"] = (
@@ -13,8 +17,7 @@ os.environ["AWS_SESSION_TOKEN"] = (
 )
 os.environ["AWS_DEFAULT_REGION"] = "us-east-1"
 
-
-# Utilisation de S3 pour stocker la data.
+# Use S3-compatible filesystem (e.g., MinIO) for data storage
 fs = s3fs.S3FileSystem(
     client_kwargs={"endpoint_url": "https://" + "minio.lab.sspcloud.fr"},
     key=os.environ["AWS_ACCESS_KEY_ID"],
@@ -25,18 +28,18 @@ fs = s3fs.S3FileSystem(
 MY_BUCKET = "ukazmierczak"
 PATH = "/base.json"
 
-# Configuration du logger pour écrire dans un fichier
+# Configure logger to write logs to a file with rotation and retention
 logger.add("application.log", rotation="500 KB", retention="1 day", level="DEBUG")
 
 
-# Chargement du fichier css
+# Load CSS from a local file and inject it into the Streamlit app
 def load_css(file_name):
     with open(file_name) as f:
         css_content = f.read()
     st.markdown(f"<style>{css_content}</style>", unsafe_allow_html=True)
 
 
-# Chargement du fichier base.json
+# Load conversation data from S3 bucket
 def load_data():
     try:
         with fs.open(f"s3://{MY_BUCKET}/{PATH}", "r") as f:
@@ -46,6 +49,7 @@ def load_data():
         return {}
 
 
+# Save updated conversation data to S3 bucket
 def save_data(data):
     try:
         with fs.open(f"s3://{MY_BUCKET}/{PATH}", "w") as f:
@@ -55,17 +59,24 @@ def save_data(data):
         logger.error(f"Error saving data: {e}")
 
 
+# Check if this is the first app load to initialize session state
 if "is_first_load" not in st.session_state:
     logger.info("Loading...")
-    st.session_state.data = load_data()
+    st.session_state.data = load_data()  # Load existing data from S3
     st.session_state.is_first_load = True
+
+# If data exists and a save flag is set, write to S3
 elif st.session_state.data and "save_data" in st.session_state:
     if st.session_state.save_data:
         save_data(st.session_state.data)
-        st.session_state.save_data = False
+        st.session_state.save_data = False  # Reset the save flag
         logger.info(st.session_state.save_data)
 
-
+# Load UI styling
 load_css("main.css")
+
+# Render the sidebar with list of contacts
 render_sidebar(st.session_state.data.keys())
+
+# Render the main conversation interface
 render_conversation()
