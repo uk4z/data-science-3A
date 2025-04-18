@@ -21,10 +21,6 @@
         {
             "msg": "See you later",
             "speaker": "contact"
-        },
-        {
-            "msg": "No way",
-            "speaker": "user"
         }
     ],
     "Marion": []

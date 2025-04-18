@@ -7,9 +7,6 @@ import s3fs
 import os
 
 # Set AWS credentials and region environment variables (replace <TO_WRITE> with actual values)
-os.environ["AWS_ACCESS_KEY_ID"] = "<TO_WRITE>"
-os.environ["AWS_SECRET_ACCESS_KEY"] = "<TO_WRITE>"
-os.environ["AWS_SESSION_TOKEN"] = "<TO_WRITE>"
 os.environ["AWS_ACCESS_KEY_ID"] = "KWIT4KKCQMIH05NA16P4"
 os.environ["AWS_SECRET_ACCESS_KEY"] = "n5MKQ49CtFo5QD6njFcPrbRHGosAV+e3gmYtvfqx"
 os.environ["AWS_SESSION_TOKEN"] = (

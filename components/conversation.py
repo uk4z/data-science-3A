@@ -1,6 +1,7 @@
 import streamlit as st
 from loguru import logger
 
+
 # Load a given conversation into session state
 def load_conversation(conversation):
     st.session_state["conversation"] = conversation
@@ -31,13 +32,15 @@ def render_conversation():
 
         # Display the active contact's name centered at the top
         st.markdown(
-            f"<h2 style='text-align: center; width: 100%;'>{st.session_state.active_contact}</h2>", 
-            unsafe_allow_html=True
+            f"<h2 style='text-align: center; width: 100%;'>{st.session_state.active_contact}</h2>",
+            unsafe_allow_html=True,
         )
 
     # Iterate over messages in the conversation and display them
     for ingress in st.session_state.conversation:
-        col1, col2 = st.columns([1, 1])  # Create two equal columns for left and right alignment
+        col1, col2 = st.columns(
+            [1, 1]
+        )  # Create two equal columns for left and right alignment
 
         if ingress["speaker"] == "contact":
             with col1:  # Display contact messages on the left
