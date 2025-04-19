@@ -4,3 +4,4 @@ streamlit
 black
 loguru
 s3fs
+python-dotenv

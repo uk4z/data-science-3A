@@ -2,22 +2,19 @@ import streamlit as st
 from loguru import logger
 from components.sidebar import render_sidebar
 from components.conversation import render_conversation
+from dotenv import load_dotenv
 import json
 import s3fs
 import os
 
-# Set AWS credentials and region environment variables (replace <TO_WRITE> with actual values)
-os.environ["AWS_ACCESS_KEY_ID"] = ""
-os.environ["AWS_SECRET_ACCESS_KEY"] = ""
-os.environ["AWS_SESSION_TOKEN"] = ""
-os.environ["AWS_DEFAULT_REGION"] = "us-east-1"
+load_dotenv() 
 
 # Use S3-compatible filesystem (e.g., MinIO) for data storage
 fs = s3fs.S3FileSystem(
     client_kwargs={"endpoint_url": "https://" + "minio.lab.sspcloud.fr"},
-    key=os.environ["AWS_ACCESS_KEY_ID"],
-    secret=os.environ["AWS_SECRET_ACCESS_KEY"],
-    token=os.environ["AWS_SESSION_TOKEN"],
+    key=os.getenv("AWS_ACCESS_KEY_ID"),
+    secret=os.getenv("AWS_SECRET_ACCESS_KEY"),
+    token=os.getenv("AWS_SESSION_TOKEN"),
 )
 
 MY_BUCKET = "ukazmierczak"
