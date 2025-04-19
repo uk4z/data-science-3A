@@ -7,7 +7,7 @@ import json
 import s3fs
 import os
 
-load_dotenv() 
+load_dotenv()
 
 # Use S3-compatible filesystem (e.g., MinIO) for data storage
 fs = s3fs.S3FileSystem(
