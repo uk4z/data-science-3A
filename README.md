@@ -28,15 +28,6 @@ This is a simple Streamlit-based application deployed with Kubernetes using Argo
 - (Optional) Kubernetes cluster with ArgoCD
 - Credentials to SSP Cloud required.
 
-### Setup the environment
-
-In order to access the database, you have to create a .env file and write your credentials:
-```bash
-AWS_ACCESS_KEY_ID=...
-AWS_SECRET_ACCESS_KEY=...
-AWS_SESSION_TOKEN=...
-```
-
 ### Setup with Python
 
 ```bash
