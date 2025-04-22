@@ -36,7 +36,7 @@ def load_data():
     try:
         # Using AWS credentials you can create your own bucket and data.
         # with fs.open(f"s3://{MY_BUCKET}/{PATH}", "r") as f:
-        with open("base/data.json", "r") as f:
+        with open("data/base.json", "r") as f:
             return json.load(f)
     except Exception as e:
         logger.error(f"Error loading data: {e}")
@@ -46,7 +46,7 @@ def load_data():
 # Save updated conversation data to S3 bucket
 def save_data(data):
     try:
-        with fs.open("base/data.json", "r", "w") as f:
+        with fs.open("data/base.json", "r", "w") as f:
             json.dump(data, f, indent=4)
         logger.info("Data successfully written to S3")
     except Exception as e:
