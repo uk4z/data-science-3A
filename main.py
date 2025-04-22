@@ -34,7 +34,7 @@ def load_css(file_name):
 # Load conversation data from S3 bucket
 def load_data():
     try:
-        with fs.open(f"s3://{MY_BUCKET}/{PATH}", "r") as f:
+        with fs.open("data/base.json", "r") as f:
             return json.load(f)
     except Exception as e:
         logger.error(f"Error loading data: {e}")
@@ -44,7 +44,7 @@ def load_data():
 # Save updated conversation data to S3 bucket
 def save_data(data):
     try:
-        with fs.open(f"s3://{MY_BUCKET}/{PATH}", "w") as f:
+        with fs.open("data/base.json", "w") as f:
             json.dump(data, f, indent=4)
         logger.info("Data successfully written to S3")
     except Exception as e:
