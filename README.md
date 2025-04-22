@@ -17,7 +17,6 @@ This is a simple Streamlit-based application deployed with Kubernetes using Argo
 ├── application.yaml          # ArgoCD application manifest
 ├── Dockerfile                # Docker image definition
 ├── LICENSE
-├── HACKING.md
 ```
 
 ## Getting Started
